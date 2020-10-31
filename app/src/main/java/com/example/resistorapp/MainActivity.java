@@ -2,6 +2,7 @@ package com.example.resistorapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,7 +17,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     TextView FinalResult, colour1, colour2, colour3, colour4, LowerLimit, HigherLimit;
     int bandColour,  backgroundColor;
     boolean gigaOhms, megaOhms, kiloOhms = false;
-    boolean missingValue;
+    boolean missingValue, black;
     double lowerLimit, higherLimit;
     Spinner spinner1, spinner2, spinner3, spinner4;
     String empty = "1 + 2 + 3";
@@ -70,6 +71,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 colour1.setBackgroundResource(FirstBand);
                 backgroundColor = doSpinnerColour(position);
                 spinner1.setBackgroundResource(backgroundColor);
+                if (backgroundColor == R.color.Black)
+                {
+                    TextView textView = (TextView) spinner1.getItemAtPosition(1);
+                    textView.setTextColor(Color.parseColor("#FFFFFF"));
+                }
             }
             else if(spinner.getId() == R.id.spinner2)
             {
